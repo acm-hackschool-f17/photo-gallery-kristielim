@@ -1,11 +1,13 @@
 
 function attachEventHandlers() {
 	$('.image').on('click', handleImageClick);
+	$('.choice-image').on('click', handleChoiceImageClick);
 }
 
 function handleImageClick(event) {
 	const target = $(event.target);
 	const images = $('.photo-row .image');
+	console.log(images);
 	const info = $('.info-pane');
 	const preview = $('.preview-image');
 
@@ -23,6 +25,15 @@ function handleImageClick(event) {
 
 		info.fadeIn(200);
 		preview.css('background-image', target.css('background-image'));
+	}
+}
+
+function handleChoiceImageClick(event) {
+	const target = $(event.target);
+	const images = $('.photo-row .image');
+	const imageUrls = [];
+	for (var i = images.length - 1; i >= 0; i--) {
+		imageUrls[i] = images[i].css('background-image');
 	}
 }
 
